@@ -1,0 +1,27 @@
+﻿@using ProyectoProem.Models
+@model Clientes
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form asp-action="Index">
+   <div class="mb-3">
+    <label asp-for="Id" class="form-label">ID</label>
+    <input type="text" name="Id" class="form-control" id="Id" >
+  </div>
+  <div class="mb-3">
+    <label asp-for="Nombre" class="form-label">Nombre</label>
+    <input type="text" name="nombre" class="form-control" id="Nombre" >
+  </div>
+  <div class="mb-3">
+    <label asp-for="Codigo" class="form-label">Codigo</label>
+    <input type="text" name="codigo" class="form-control" id="Codigo">
+  </div>  
+  <div class="mb-3">
+    <label asp-for="Direccion" class="form-label">Direccion</label>
+    <input type="text" name="direccion" class="form-control" id="Direccion">
+  </div> 
+    <input type="submit" name="Guardar" class="btn btn-primary">
+    <button  class="btn btn-primary" name="Listado" asp-area="" asp-controller="Clientes" asp-action="ListaClientes">Listado</button>
+</form>

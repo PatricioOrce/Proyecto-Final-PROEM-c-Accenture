@@ -1,0 +1,56 @@
+﻿@using ProyectoProem.Models;
+
+@model FacturasListModel;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form asp-action="ListaFacturas" method="get">
+    <div class="form-group">
+        <label class="form-label">Nombre</label>
+        <input name ="valor" class="form-control" >
+    </div>
+    <div class="form-group">
+          <input type="submit" name="Buscar" class="btn btn-primary">
+    </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Cliente</th>
+      <th scope="col">Numero</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Items</th>
+    </tr>
+  </thead>
+  <tbody>
+     @foreach (var facturas in Model.Facturas)
+        { 
+            <tr>
+                <td>@facturas.Cliente.Nombre</td>
+                <td>@facturas.Numero</td>
+                <td>@facturas.Fecha</td>
+                <td>
+                    @*<ul>
+                        @foreach (var item in facturas.Items)
+                        {
+                            <li>
+                                @item.Descripcion
+                                @item.Codigo
+                                @item.Precio
+                                @item.Cantidad
+                            </li>
+                        }
+                    </ul>*@
+                </td>
+                <td><a class="btn btn-primary" role="button" asp-area="" asp-controller="Facturas" asp-action="Editar" asp-route-id="@facturas.Id">Editar</a></td>
+                <td><a class="btn btn-danger" role="button" asp-area="" asp-controller="Facturas" asp-action="Eliminar" asp-route-id="@facturas.Id">Eliminar</a></td>
+            </tr>
+        }
+  </tbody>
+</table>
+
+<a class="btn btn-primary" role="button" asp-area="" asp-controller="Facturas" asp-action="Editar" asp-route-id="0">Nueva Factura</a>

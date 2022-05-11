@@ -1,0 +1,44 @@
+﻿@using ProyectoProem.Models;
+
+@model ClientesListModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form asp-action="ListaClientes" method="get">
+    <div class="form-group">
+        <label class="form-label">Nombre</label>
+        <input name ="valor" class="form-control" >
+    </div>
+    <div class="form-group">
+          <input type="submit" name="Buscar" class="btn btn-primary">
+    </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Codigo</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Saldo Cta Cte</th>
+    </tr>
+  </thead>
+  <tbody>
+     @foreach (var cliente in Model.Clientes)
+        { 
+            <tr>
+                <td>@cliente.Codigo</td>
+                <td>@cliente.Nombre</td>
+                <td>@cliente.Direccion</td>
+                <td>@cliente.SaldoCtaCte</td>
+                <td><a class="btn btn-primary" role="button" asp-area="" asp-controller="Clientes" asp-action="Editar" asp-route-id="@cliente.Id">Editar</a></td>
+                <td><a class="btn btn-danger" role="button" asp-area="" asp-controller="Clientes" asp-action="Eliminar" asp-route-id="@cliente.Id">Eliminar</a></td>
+            </tr>
+        }
+  </tbody>
+</table>
+
+<a class="btn btn-primary" role="button" asp-area="" asp-controller="Clientes" asp-action="Editar" asp-route-id="0">Nuevo</a>
